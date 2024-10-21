@@ -37,6 +37,7 @@ body {
     text-align: center; /* 電卓内のディスプレイとボタンを中央に寄せる */
     padding: 20px;
     background: #f9f4f4;
+    box-shadow: 1px 1px 4px;
 }
 
 /* ラベル部のデザイン */
@@ -44,11 +45,12 @@ body {
     width: 270px;
     height: 20px;
     text-align: right;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid darkgray;
     margin-left: 20px;
     margin-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
+    box-shadow: 2px 2px 1px;
 }
 
 /* ディスプレイのデザイン */
@@ -62,6 +64,7 @@ body {
     background-color: #ffffff;
     font-size: 2.5rem;
     font-weight: bold;
+    box-shadow: 1px 1px 2px;
 }
 
 /* 電卓ボタンのデザイン */
@@ -80,6 +83,8 @@ body {
     margin-bottom: 10px;
     border-radius: 30px;
     cursor: pointer;
+    transition-duration: .5s;
+    box-shadow: 3px 3px 6px;
 }
 
 /* クリア（C）ボタンのデザイン */
@@ -121,7 +126,21 @@ body {
 .btn-minus:disabled,
 .btn-plus:disabled,
 .btn-backspace:disabled,
-.btn-equal:disabled {
+.btn-equal:disabled,
+.btn-decipoint:disabled {
     color: #b4c1d1;
     cursor: not-allowed;
+}
+
+/* ボタンのactive指定 */
+.btn-num:active,
+.btn-devide:active,
+.btn-multi:active,
+.btn-minus:active,
+.btn-clear:active,
+.btn-equal:active,
+.btn-plus:active,
+.btn-backspace:active,
+.btn-decipoint:active {
+    transform: scale(0.6, 0.6);
 }

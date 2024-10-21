@@ -17,6 +17,7 @@ const $btnMulti = document.querySelector(".btn-multi"); // ×ボタン要素
 const $btnMinus = document.querySelector(".btn-minus"); // -ボタン要素
 const $btnPlus = document.querySelector(".btn-plus");   // +ボタン要素
 const $btnEqual = document.querySelector(".btn-equal"); // =ボタン要素
+const $btnDecipoint = document.querySelector(".btn-decipoint"); // .ボタン要素
 
 // 電卓のボタン押下処理
 function btnClick(btntag) {
@@ -24,7 +25,11 @@ function btnClick(btntag) {
     // ボタン押下時にディスプレイが0表示で0ボタン押下の場合、ディスプレイは0のまま。
     if (displayValue === '0' && btnValue === '0') {
         updateDisplay(displayValue);
-        $btnBackspace.disabled && buttonBsChangeDisabled();
+        // 「0」を押下時でディスプレイ部が「0」の場合は「←.」ボタンは活性にする。
+        $btnBackspace.disabled && btnBsChangeDisabled();
+        $btnDecipoint.disabled && btnDeciPointChangeDisabled();
+        !$btnDevide.disabled && btnOpeChangeDisabled();
+        !$btnEqual.disabled && btnEqualChangeDisabled();
         return;
     }
 
@@ -32,7 +37,8 @@ function btnClick(btntag) {
     // console.log('displayValue: ' + displayValue);
     // console.log('previousValue: ' + previousValue);
     // console.log('noEnterFlg: ' + noEnterFlg);
-
+    console.log('$btnBackspace：' + $btnBackspace.disabled);
+    console.log('$btnDecipoint：' + $btnDecipoint.disabled);
     // クリア押下時
     if (btnValue === 'C') {
         pushClear();
@@ -68,10 +74,11 @@ function pushNum() {
     if (operator === '') {
         updateInputDisplay('');
     }
-    // ←÷×+-=ボタン活性
-    $btnBackspace.disabled && buttonBsChangeDisabled();
+    // ←÷×+-=.ボタン活性
+    $btnBackspace.disabled && btnBsChangeDisabled();
     $btnDevide.disabled && btnOpeChangeDisabled();
     $btnEqual.disabled && btnEqualChangeDisabled();
+    $btnDecipoint.disabled && btnDeciPointChangeDisabled();
 }
 
 // 小数点押下時の処理
@@ -79,7 +86,7 @@ function pushDeciPoint() {
     displayValue += btnValue;
     updateDisplay(displayValue);
     // ←ボタン非活性
-    $btnBackspace.disabled && buttonBsChangeDisabled();
+    $btnBackspace.disabled && btnBsChangeDisabled();
 }
 
 // 演算記号押下時の処理
@@ -99,10 +106,11 @@ function pushOpe(){
 
     operator = btnValue;    // 演算記号を格納
     updateInputDisplay(inputValue);
-    // ←÷×+-=ボタン非活性
-    !$btnBackspace.disabled && buttonBsChangeDisabled();
+    // ←÷×+-=.ボタン非活性
+    !$btnBackspace.disabled && btnBsChangeDisabled();
     !$btnDevide.disabled && btnOpeChangeDisabled();
     !$btnEqual.disabled && btnEqualChangeDisabled();
+    !$btnDecipoint.disabled && btnDeciPointChangeDisabled();
 }
 
 // 「C」ボタン押下時の処理
@@ -111,10 +119,11 @@ function pushClear(){
     resetDisplay();
     updateDisplay(displayValue);
     updateInputDisplay('');
-    // ←活性、÷×+-=ボタン非活性
-    $btnBackspace.disabled && buttonBsChangeDisabled();
+    // ←.活性、÷×+-=ボタン非活性
+    $btnBackspace.disabled && btnBsChangeDisabled();
     !$btnDevide.disabled && btnOpeChangeDisabled();
     !$btnEqual.disabled && btnEqualChangeDisabled();
+    $btnDecipoint.disabled && btnDeciPointChangeDisabled();
 }
 
 // =ボタン押下処理
@@ -123,10 +132,11 @@ function pushEqual(){
     inputValue += (displayValue + btnValue);
     updateInputDisplay(inputValue);
     calc();
-    // ←÷×+-=ボタン非活性
-    !$btnBackspace.disabled && buttonBsChangeDisabled();
+    // ←÷×+-=.ボタン非活性
+    !$btnBackspace.disabled && btnBsChangeDisabled();
     !$btnDevide.disabled && btnOpeChangeDisabled();
     !$btnEqual.disabled && btnEqualChangeDisabled();
+    !$btnDecipoint.disabled && btnDeciPointChangeDisabled();
 }
 
 // backspace押下時（ディスプレイ最後の1文字を削除する）
@@ -136,6 +146,10 @@ function pushBksp() {
     // バックスペース時に削除文字がない場合はディスプレイ0表示
     (displayValue === '') && (displayValue = '0');
     updateDisplay(displayValue);
+    if(displayValue == '0'){
+        !$btnDevide.disabled && btnOpeChangeDisabled();
+        !$btnEqual.disabled && btnEqualChangeDisabled();
+    }
 }
 
 // 計算処理
@@ -186,7 +200,7 @@ function updateInputDisplay(value) {
 }
 
 // 「←」ボタンの活性⇔非活性切り替え
-function buttonBsChangeDisabled(){
+function btnBsChangeDisabled(){
     $btnBackspace.disabled ? $btnBackspace.disabled = false : $btnBackspace.disabled = true;
 }
 
@@ -201,4 +215,9 @@ function btnOpeChangeDisabled(){
 // イコールの活性・非活性切り替え
 function btnEqualChangeDisabled(){
     $btnEqual.disabled ? $btnEqual.disabled = false : $btnEqual.disabled = true;
+}
+
+// イコールの活性・非活性切り替え
+function btnDeciPointChangeDisabled(){
+    $btnDecipoint.disabled ? $btnDecipoint.disabled = false : $btnDecipoint.disabled = true;
 }
