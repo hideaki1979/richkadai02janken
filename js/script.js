@@ -37,8 +37,8 @@ function btnClick(btntag) {
     // console.log('displayValue: ' + displayValue);
     // console.log('previousValue: ' + previousValue);
     // console.log('noEnterFlg: ' + noEnterFlg);
-    console.log('$btnBackspace：' + $btnBackspace.disabled);
-    console.log('$btnDecipoint：' + $btnDecipoint.disabled);
+    // console.log('$btnBackspace：' + $btnBackspace.disabled);
+    // console.log('$btnDecipoint：' + $btnDecipoint.disabled);
     // クリア押下時
     if (btnValue === 'C') {
         pushClear();
