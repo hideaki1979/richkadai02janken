@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>電卓アプリ</title>
+</head>
+<body>
+    <div class="calculator">
+        <p class="inputlabel"></p>
+        <input type="text" name="display" class="display" value="0" disabled>
+
+        <div class="calc-button">
+            <input type="button" value="7" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="8" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="9" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="÷" class="btn-devide" onclick="btnClick(this)" disabled>
+        </div>
+        <div class="calc-button">
+            <input type="button" value="4" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="5" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="6" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="×" class="btn-multi" onclick="btnClick(this)" disabled>
+        </div>
+        <div class="calc-button">
+            <input type="button" value="1" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="2" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="3" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="-" class="btn-minus" onclick="btnClick(this)" disabled>
+        </div>
+        <div class="calc-button">
+            <input type="button" value="0" class="btn-num" onclick="btnClick(this)">
+            <input type="button" value="C" class="btn-clear" onclick="btnClick(this)">
+            <input type="button" value="=" class="btn-equal" onclick="btnClick(this)" disabled>
+            <input type="button" value="+" class="btn-plus" onclick="btnClick(this)" disabled>
+        </div>
+        <div class="calc-button">
+            <input type="button" value="." class="btn-decipoint" onclick="btnClick(this)">
+            <input type="button" value="←" class="btn-backspace" onclick="btnClick(this)">
+        </div>
+    </div>
+    
+<script src="js/script.js"></script>
+</body>
+</html>

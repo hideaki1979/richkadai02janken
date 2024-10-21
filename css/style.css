@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+/* 全要素にborder-box指定（heightとwidthにpaddingとborderを含む） */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;    /* 文字サイズを正しく反映 */
+}
+
+body {
+    /* body部の余白をなくすためのおまじない */
+    margin: 0;
+    padding: 0;
+    /* ↓電卓を画面全体の中央に配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 2rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100,
+      "YTLC" 500;
+}
+
+/* 電卓のデザイン */
+.calculator {
+    border: 2px solid #b4c1d1;
+    border-radius: 10px;
+    width: 350px;
+    height: 500px;
+    text-align: center; /* 電卓内のディスプレイとボタンを中央に寄せる */
+    padding: 20px;
+    background: #f9f4f4;
+}
+
+/* ラベル部のデザイン */
+.inputlabel {
+    width: 270px;
+    height: 20px;
+    text-align: right;
+    border-bottom: 1px solid black;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ディスプレイのデザイン */
+.display {
+    width: 270px;
+    height: 50px;
+    text-align: right;  /* 文字は左寄せ */
+    border: 3px solid #777777;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* 電卓ボタンのデザイン */
+.btn-num,
+.btn-devide,
+.btn-multi,
+.btn-minus,
+.btn-clear,
+.btn-equal,
+.btn-plus,
+.btn-decipoint,
+.btn-backspace {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* クリア（C）ボタンのデザイン */
+.btn-clear {
+    color: red;
+}
+
+/* イコール（=）ボタンのデザイン */
+.btn-equal {
+    background-color: #777777;
+    color: orangered;
+}
+
+/* 四則演算ボタン（+-×÷）のデザイン */
+.btn-devide,
+.btn-multi,
+.btn-minus,
+.btn-plus {
+    color: darkgreen;
+    background-color: #ffffff;
+}
+
+/* ボタンのhover指定 */
+.btn-num:hover,
+.btn-devide:hover,
+.btn-multi:hover,
+.btn-minus:hover,
+.btn-clear:hover,
+.btn-equal:hover,
+.btn-plus:hover,
+.btn-backspace:hover,
+.btn-decipoint:hover {
+    background-color: aqua;
+}
+
+/* ボタンの非活性時のデザイン */
+.btn-devide:disabled,
+.btn-multi:disabled,
+.btn-minus:disabled,
+.btn-plus:disabled,
+.btn-backspace:disabled,
+.btn-equal:disabled {
+    color: #b4c1d1;
+    cursor: not-allowed;
+}
