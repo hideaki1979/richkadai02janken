@@ -6,9 +6,8 @@ let previousValue = ''; // 前に入力した数値
 let operator = '';      // 四則演算格納用
 let inputValue = '';    // 計算式表示用
 
-const btnSymbols = '+-×÷=';   // 四則演算とイコール
-const btnFourOpe = '+-×÷';  // 四則演算
-const btnNum = /^[0-9]$/;   // 範囲0～9を含む1文字の正規表現
+const BUTTON_FOUR_ARITHMETIC_OPERATIONS = '+-×÷';  // 四則演算
+const BUTTON_NUM = /^[0-9]$/;   // 範囲0～9を含む1文字の正規表現
 const $display = document.querySelector(".display");    // ディスプレイ部要素
 const $inputLabel = document.querySelector(".inputlabel");  // 計算式表示部要素
 const $btnBackspace = document.querySelector(".btn-backspace"); // ←ボタン要素
@@ -33,12 +32,7 @@ function btnClick(btntag) {
         return;
     }
 
-    // console.log('btnValue: ' + btnValue);
-    // console.log('displayValue: ' + displayValue);
-    // console.log('previousValue: ' + previousValue);
-    // console.log('noEnterFlg: ' + noEnterFlg);
-    // console.log('$btnBackspace：' + $btnBackspace.disabled);
-    // console.log('$btnDecipoint：' + $btnDecipoint.disabled);
+    
     // クリア押下時
     if (btnValue === 'C') {
         pushClear();
@@ -46,10 +40,10 @@ function btnClick(btntag) {
     } else if (btnValue === '='){
         pushEqual();
     // 数値ボタン押下時
-    } else if (btnNum.test(btnValue)){
+    } else if (BUTTON_NUM.test(btnValue)){
         pushNum();
     // +-×÷ボタン押下時
-    } else if (btnFourOpe.includes(btnValue)) {
+    } else if (BUTTON_FOUR_ARITHMETIC_operations.includes(btnValue)) {
         pushOpe();
     // ←ボタン押下時
     } else if (btnValue === '←'){
@@ -63,7 +57,7 @@ function btnClick(btntag) {
 // 数値ボタン押下時の処理
 function pushNum() {
     // 0の場合と記号押下直後の数値ボタン押下は押された数値を表示、それ以外は数値を連結して表示
-    if (btnNum.test(btnValue) && displayValue === '0'){
+    if (BUTTON_NUM.test(btnValue) && displayValue === '0'){
         displayValue = btnValue;
     } else {
         displayValue += btnValue;
